@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <TextView
+        android:id="@+id/tvagdetails"
+        android:text="Agent Details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+   
+            <TextView
+                android:id="@+id/tvagname"
+                android:text="Agent Name:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        
+            <EditText
+                android:id="@+id/edagname"
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        
+            <TextView
+                android:id="@+id/tvagemail"
+                android:text="E-mail Address:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        
+            <EditText
+                android:id="@+id/edagemail"
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        
+            <TextView
+                android:id="@+id/tvagphone"
+                android:text="Phone Number:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        
+            <EditText
+                android:id="@+id/edagphone"
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/flmap"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnshare"
+            android:text="Share"
+            android:layout_width="190.0dp"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btnemail"
+            android:text="Message"
+            android:layout_width="190.0dp"
+            android:layout_height="wrap_content"/>
+        
+    </LinearLayout>
+
+</LinearLayout>
+
