@@ -67,7 +67,7 @@ namespace aaaaa
             Agent agent = new Agent();
             agent = Newtonsoft.Json.JsonConvert.DeserializeObject<Agent>(agentinfo);
 
-            ag_ame.Text = agent.Name;
+            ag_name.Text = agent.Name;
             ag_email.Text = agent.Email;
             ag_phone.Text = agent.Phonenumber;
             */
