@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/RtextName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"/>
+
+        <EditText
+            android:id="@+id/Rname"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:padding="10dp"
+            android:hint="Last Name, First Name"/>
+
+        <TextView
+            android:id="@+id/RtextPhonenumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone number"/>
+
+        <EditText
+            android:id="@+id/RPhonenumber"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:padding="10dp"
+            android:hint="0211231234"/>
+        
+
+        <TextView
+            android:id="@+id/RtextEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"/>
+
+        <EditText
+            android:id="@+id/Remail"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:padding="10dp"
+            android:hint="123@xxxx.com"/>
+
+        <TextView
+            android:id="@+id/RtextCountry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Country"/>
+
+        <EditText
+            android:id="@+id/RCountry"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:padding="10dp"/>
+
+        <TextView
+            android:id="@+id/RUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User Name"
+        />
+        <EditText
+            android:id="@+id/Rusername"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:padding="10dp"/>
+
+        <TextView
+            android:id="@+id/RtextPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Password"/>
+
+        <EditText
+            android:id="@+id/Rpassword"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:padding="10dp"
+            android:inputType="textPassword"/>
+
+        <Button
+            android:id="@+id/btnRRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Rpassword"
+            android:layout_marginTop="15dp"
+            android:text="Register"/>
+
+    </LinearLayout>
+</RelativeLayout>
