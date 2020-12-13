@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Comment -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#ffddf2e3"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_height="150dp"
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:scaleType="centerCrop"
+        android:id="@+id/imgHMapFrag"/>
+
+    <LinearLayout
+        android:id="@+id/Lin1"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/HtvHeading"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="b"
+            android:textColor="@android:color/black"/>
+
+
+
+        <LinearLayout
+            android:id="@+id/Lin2"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_gravity="center_vertical"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/HtvNumberofroom"
+                android:textSize="14sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="b"
+                android:textColor="@android:color/black"/>
+            <TextView
+                android:id="@+id/HtvNumberoftoilet"
+                android:textSize="14sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="b"
+                android:textColor="@android:color/black"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Lin3"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_gravity="center_vertical"
+            android:weightSum="2">
+
+
+            <TextView
+                android:id="@+id/HtvRentfee"
+                android:textSize="14sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text=""
+                android:textColor="@android:color/black"/>
+            <TextView
+                android:id="@+id/HtvAgency"
+                android:textSize="14sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text=""
+                android:textColor="@android:color/black"/>
+        </LinearLayout>
+
+
+
+        <TextView
+            android:id="@+id/HtvLocation"
+            android:textSize="14sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="b"
+            android:textColor="@android:color/black"/>
+        <TextView
+            android:id="@+id/HtvDescription"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="b"
+            android:textColor="@android:color/black"/>
+    </LinearLayout>
+
+
+
+
+
+    <FrameLayout
+        android:id="@+id/mapFrgContainer"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_below="@id/HtvDescription"
+        android:layout_above="@id/Lin2"/>
+
+    <LinearLayout
+        android:id="@+id/Lin2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="20dp">
+
+
+        <Button
+            android:id="@+id/btnShare"
+            android:text="Share house detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btnSMS"
+            android:text="Send SMS to agency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
