@@ -148,7 +148,7 @@ namespace aaaaa
             googleMap.AddMarker(office);
 
             //marked of house list
-            var housesadd = ag_house;
+            var housesadd = ag_house.Text;
             var locations = await Geocoding.GetLocationsAsync(housesadd);
             var location = locations?.FirstOrDefault();
 
