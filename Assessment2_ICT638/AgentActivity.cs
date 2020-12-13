@@ -153,7 +153,7 @@ namespace aaaaa
             var location = locations?.FirstOrDefault();
 
             MarkerOptions house = new MarkerOptions();
-            house.SetPosition(new LatLng(location.Latitude. location.Longitude)));
+            house.SetPosition(new LatLng(location.Latitude, location.Longitude)));
             house.SetTitle("House");
             googleMap.AddMarker(house);
             
