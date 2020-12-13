@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "607214214322",
+    "project_id": "ict638mina2",
+    "storage_bucket": "ict638mina2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:607214214322:android:c7f8949d3dec3a1596fdab",
+        "android_client_info": {
+          "package_name": "com.companyname.assessment2_ict638"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "607214214322-7k0259rs191kgkum97uvhd514sttqqcj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQSENHySjTO8lq74-8WxeEi3CHyxDS8VQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "607214214322-7k0259rs191kgkum97uvhd514sttqqcj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
