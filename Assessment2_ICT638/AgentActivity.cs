@@ -22,7 +22,7 @@ namespace aaaaa
     [Activity(Label = "AgentActivity")]
     public class AgentActivity : Activity
     {
-        public EditText ag_name, ag_email, ag_phone, un;
+        public EditText ag_name, ag_email, ag_phone, un, ag_house;
 
         public class Agency
         {
@@ -68,6 +68,7 @@ namespace aaaaa
             ag_name.Text = agent.agencyname;
             ag_email.Text = agent.agencyemail;
             ag_phone.Text = agent.agencyphonenumber;
+            ag_house.Text = agent.agencylocation;
             
 
 
@@ -146,12 +147,16 @@ namespace aaaaa
             office.SetTitle("Agent's Office");
             googleMap.AddMarker(office);
 
-            /*
+            //marked of house list
+            var housesadd = ag_house;
+            var locations = await Geocoding.GetLocationsAsync(housesadd);
+            var location = locations?.FirstOrDefault();
+
             MarkerOptions house = new MarkerOptions();
-            house.SetPosition(new LatLng(house location));
+            house.SetPosition(new LatLng(location.Latitude. location.Longitude)));
             house.SetTitle("House");
             googleMap.AddMarker(house);
-            */
+            
 
             getCurrentLoc(googleMap);
         }
