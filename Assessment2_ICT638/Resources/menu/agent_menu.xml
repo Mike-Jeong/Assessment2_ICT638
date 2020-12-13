@@ -4,13 +4,11 @@
 
 	<item
 			android:id="@+id/itprofile"
-			android:icon="@drawable/customer"
 			android:title="Search"
     />
 
 	<item
 		  android:id="@+id/itlogout"
-		  android:icon="@drawable/logout"
 		  android:title="Log out"
     />
   
