@@ -4,15 +4,9 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Android.App;
-using Android.Content;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
-using Android.OS;
-using Android.Runtime;
 using Android.Util;
-using Android.Views;
-using Android.Widget;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,13 +15,24 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Android.Support.Design.Widget;
 using Android.Support.V7.App;
+using Newtonsoft.Json;
 
 namespace aaaaa
 {
     [Activity(Label = "AgentActivity")]
     public class AgentActivity : Activity
     {
-        public EditText ag_name, ag_email, ag_phone, ufn, uln;
+        public EditText ag_name, ag_email, ag_phone, un;
+
+        public class Agency
+        {
+            public string agencyname { get; set; }
+            public string agencyemail { get; set; }
+            public string agencyphonenumber { get; set; }
+            public string agencylocation { get; set; }
+
+        }
+
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -38,20 +43,13 @@ namespace aaaaa
             SetContentView(Resource.Layout.agent_layout);
 
 
-            /*
-            //toolbar
-            Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
-            SetSupportActionBar(toolbar);
-            */
-
-
             //get agent's info
             ag_name = FindViewById<EditText>(Resource.Id.edagname);
             ag_email = FindViewById<EditText>(Resource.Id.edagemail);
             ag_phone = FindViewById<EditText>(Resource.Id.edagphone);
 
-            /*
-            string agenturl = "";
+            
+            string agenturl = "https://10.0.2.2:5001/api/Agent";
             string agentinfo = "";
             var httpWebRequest = new HttpWebRequest(new Uri(agenturl));
             httpWebRequest.ServerCertificateValidationCallback = delegate { return true; };
@@ -64,42 +62,22 @@ namespace aaaaa
                 agentinfo = reader.ReadToEnd();
             }
 
-            Agent agent = new Agent();
-            agent = Newtonsoft.Json.JsonConvert.DeserializeObject<Agent>(agentinfo);
+            Agency agent = new Agency();
+            agent = Newtonsoft.Json.JsonConvert.DeserializeObject<Agency>(agentinfo);
 
-            ag_name.Text = agent.Name;
-            ag_email.Text = agent.Email;
-            ag_phone.Text = agent.Phonenumber;
-            */
-
-
-            //get user's info
-            /*
-            View v = inflater.Inflate(Resource.Layout.userprofile_layout, container, false); 
+            ag_name.Text = agent.agencyname;
+            ag_email.Text = agent.agencyemail;
+            ag_phone.Text = agent.agencyphonenumber;
             
-            ufn = v.FindViewById<EditText>(Resource.Id.userfirstname);
-            uln = v.FindViewById<EditText>(Resource.Id.userlastname);
 
-            string userurl = "";
-            string userinfo = "";
-            var httpWebRequest = new HttpWebRequest(new Uri(userurl));
-            httpWebRequest.ServerCertificateValidationCallback = delegate { return true; };
-            httpWebRequest.ContentType = "application/json";
-            httpWebRequest.Method = "Get";
 
-            HttpWebResponse response = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
-            {
-                userinfo = reader.ReadToEnd();
-            }
-
-            User user = new User();
-            user = Newtonsoft.Json.JsonConvert.DeserializeObject<User>(userinfo);
-
-            ufn.Text = user.FirstName;
-            uln.Text = user.LastName;
-            */
-
+            //get user's name
+            
+            View v = inflater.Inflate(Resource.Layout.activity_userprofile, container, false); 
+            
+            un = v.FindViewById<EditText>(Resource.Id.Pname);
+            
+        
 
             //map
             var mapFrag = MapFragment.NewInstance();
@@ -118,7 +96,7 @@ namespace aaaaa
             email.Click += Cemail;
         }
 
-        /*
+        
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.agent_menu, menu);
@@ -135,13 +113,13 @@ namespace aaaaa
             }
             else if (id == Resource.Id.itlogout)
             {
-                Intent logout = new Intent(this, typeof(LoginActivity));
+                Intent logout = new Intent(this, typeof(MainActivity));
                 StartActivity(logout);
             }
 
             return base.OnOptionsItemSelected(item);
         }
-        */
+        
 
         public async void OnMapReady(GoogleMap googleMap)
         {
@@ -162,7 +140,7 @@ namespace aaaaa
             googleMap.MoveCamera(cameraUpdate);
 
 
-            //marked
+            //office's marked
             MarkerOptions office = new MarkerOptions();
             office.SetPosition(new LatLng(-36.84966, 174.76526));
             office.SetTitle("Agent's Office");
@@ -245,7 +223,7 @@ namespace aaaaa
                     Console.WriteLine($"current Loc - Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
                     MarkerOptions curLoc = new MarkerOptions();
                     curLoc = new LatLng(location.Latitude, location.Longitude);
-                    curLoc.SetPosition(curLoc);
+                    curLoc.SetPosition(location);
                     var address = await Geocoding.GetPlacemarksAsync(location.Latitude, location.Longitude);
                     var placemark = address?.FirstOrDefault();
                     var geocodeAddress = "";
@@ -319,7 +297,7 @@ namespace aaaaa
         {
             try
             {
-                string text = $"Hi, I am {ufn.Text}{uln.Text} saw your details on the Rent-a-go app. Could you please send me details of more houses for rent in the same price range?";
+                string text = $"Hi, I am {un.Text} saw your details on the Rent-a-go app. Could you please send me details of more houses for rent in the same price range?";
                 string recipient = ag_phone.Text;
                 var message = new SmsMessage(text, new[] { recipient });
                 await Sms.ComposeAsync(message);
