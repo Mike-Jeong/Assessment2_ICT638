@@ -85,9 +85,9 @@ namespace Assessment2_ICT638
 
             //map
             var mapFrag = MapFragment.NewInstance();
-            ChildFragmentManager.BeginTransaction()
-                .Add(Resource.Id.flmap, mapFrag, "map")
-                .Commit();
+            this.FragmentManager.BeginTransaction()
+                                    .Add(Resource.Id.flmap, mapFrag, "map_fragment")
+                                    .Commit();
 
             mapFrag.GetMapAsync(this);
 
