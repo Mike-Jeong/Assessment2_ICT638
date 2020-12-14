@@ -24,6 +24,9 @@ namespace Assessment2_ICT638
     {
         public EditText ag_name, ag_email, ag_phone, un, ag_house;
 
+        GoogleMap gmap;
+        LatLng curLocation;
+
         public class Agency
         {
             public string agencyname { get; set; }
@@ -153,7 +156,7 @@ namespace Assessment2_ICT638
             var location = locations?.FirstOrDefault();
 
             MarkerOptions house = new MarkerOptions();
-            house.SetPosition(new LatLng(location.Latitude, location.Longitude)));
+            house.SetPosition(new LatLng(location.Latitude, location.Longitude));
             house.SetTitle("House");
             googleMap.AddMarker(house);
             
@@ -163,6 +166,7 @@ namespace Assessment2_ICT638
 
         public async void getLastLocation(GoogleMap googleMap)
         {
+            Console.WriteLine("Test - LastLoc");
             try
             {
                 var location = await Geolocation.GetLastKnownLocationAsync();
@@ -196,28 +200,13 @@ namespace Assessment2_ICT638
             }
             catch (FeatureNotSupportedException fnsEx)
             {
-                // Handle not supported on device exception
-                Toast.MakeText(Activity, "Feature Not Supported", ToastLength.Short).Show();
-            }
-            catch (FeatureNotEnabledException fneEx)
-            {
-                // Handle not enabled on device exception
-                Toast.MakeText(Activity, "Feature Not Enabled", ToastLength.Short).Show();
-            }
-            catch (PermissionException pEx)
-            {
-                // Handle permission exception
-                Toast.MakeText(Activity, "Needs more permission", ToastLength.Short).Show();
-            }
-            catch (Exception ex)
-            {
-                // Unable to get location
-                Toast.MakeText(Activity, "Unable to get location", ToastLength.Short).Show();
+
             }
         }
 
         public async void getCurrentLoc(GoogleMap googleMap)
         {
+            Console.WriteLine("Test - CurrentLoc");
             try
             {
                 var request = new GeolocationRequest(GeolocationAccuracy.Medium);
@@ -227,8 +216,8 @@ namespace Assessment2_ICT638
                 {
                     Console.WriteLine($"current Loc - Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
                     MarkerOptions curLoc = new MarkerOptions();
-                    curLoc = new LatLng(location.Latitude, location.Longitude);
-                    curLoc.SetPosition(location);
+                    curLocation = new LatLng(location.Latitude, location.Longitude);
+                    curLoc.SetPosition(curLocation);
                     var address = await Geocoding.GetPlacemarksAsync(location.Latitude, location.Longitude);
                     var placemark = address?.FirstOrDefault();
                     var geocodeAddress = "";
@@ -270,22 +259,7 @@ namespace Assessment2_ICT638
             }
             catch (FeatureNotSupportedException fnsEx)
             {
-                // Handle not supported on device exception
-                Toast.MakeText(Activity, "Feature Not Supported", ToastLength.Short);
-            }
-            catch (FeatureNotEnabledException fneEx)
-            {
-                // Handle not enabled on device exception
-                Toast.MakeText(Activity, "Feature Not Enabled", ToastLength.Short);
-            }
-            catch (PermissionException pEx)
-            {
-                // Handle permission exception
-                Toast.MakeText(Activity, "Needs more permission", ToastLength.Short);
-            }
-            catch (Exception ex)
-            {
-                getLastLocation(googleMap);
+                
             }
         }
 
