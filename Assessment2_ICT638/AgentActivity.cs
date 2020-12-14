@@ -40,6 +40,19 @@ namespace Assessment2_ICT638
         }
 
 
+
+        public class User
+        {
+            public int id { get; set; }
+            public string name { get; set; }
+            public string username { get; set; }
+            public string password { get; set; }
+            public string phonenumber { get; set; }
+            public string country { get; set; }
+            public string email { get; set; }
+        }
+
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -76,14 +89,6 @@ namespace Assessment2_ICT638
             ag_phone.Text = agent.agencyphonenumber;
             ag_house.Text = agent.agencylocation;
             
-
-
-            //get user's name
-            
-            View v = inflater.Inflate(Resource.Layout.activity_userprofile, container, false); 
-            
-            un = v.FindViewById<EditText>(Resource.Id.Pname);
-            
         
 
             //map
@@ -103,7 +108,7 @@ namespace Assessment2_ICT638
             email.Click += Cemail;
         }
 
-        
+
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.agent_menu, menu);
@@ -277,6 +282,24 @@ namespace Assessment2_ICT638
 
         private async void Cemail(object sender, EventArgs e)
         {
+            string userurl = "https://10.0.2.2:5001/api/User";
+            string userinfo = "";
+            var httpWebRequest = new HttpWebRequest(new Uri(userurl));
+            httpWebRequest.ServerCertificateValidationCallback = delegate { return true; };
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "Get";
+
+            HttpWebResponse response = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
+            {
+                userinfo = reader.ReadToEnd();
+            }
+
+            User user = new User();
+            user = Newtonsoft.Json.JsonConvert.DeserializeObject<User>(userinfo);
+
+            un.Text = user.name;
+
             try
             {
                 string text = $"Hi, I am {un.Text} saw your details on the Rent-a-go app. Could you please send me details of more houses for rent in the same price range?";
