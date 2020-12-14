@@ -16,6 +16,8 @@ using Xamarin.Essentials;
 using Android.Support.Design.Widget;
 using Android.Support.V7.App;
 using Newtonsoft.Json;
+using System.IO;
+using System.Net;
 
 namespace Assessment2_ICT638
 {
