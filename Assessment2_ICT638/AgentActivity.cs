@@ -18,11 +18,12 @@ using Android.Support.V7.App;
 using Newtonsoft.Json;
 using System.IO;
 using System.Net;
+using Android.Gms.Common;
 
 namespace Assessment2_ICT638
 {
     [Activity(Label = "AgentActivity")]
-    public class AgentActivity : Activity
+    public class AgentActivity : Activity, IOnMapReadyCallback
     {
         public EditText ag_name, ag_email, ag_phone, un, ag_house;
 
