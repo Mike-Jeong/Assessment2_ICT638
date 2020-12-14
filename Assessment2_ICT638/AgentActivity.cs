@@ -17,7 +17,7 @@ using Android.Support.Design.Widget;
 using Android.Support.V7.App;
 using Newtonsoft.Json;
 
-namespace aaaaa
+namespace Assessment2_ICT638
 {
     [Activity(Label = "AgentActivity")]
     public class AgentActivity : Activity
